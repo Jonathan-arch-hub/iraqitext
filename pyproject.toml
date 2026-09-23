@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "iraqitext"
+version = "0.2.0"
+description = "Lightweight NLP for the Iraqi Arabic dialect: normalization, tokenization, dialect detection and Iraqi <-> MSA translation"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+
+authors = [
+    { name = "JOHN" }
+]
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Operating System :: OS Independent",
+    "Natural Language :: Arabic",
+    "Topic :: Text Processing :: Linguistic",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+iraqitext = ["dictionary.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
