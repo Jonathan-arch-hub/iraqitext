@@ -112,6 +112,37 @@ for t in tokenize("شلونك؟"):
   proclitics `و / ف / ب / ك / ل` (experimental): `وشخبارك` → `وما أخبارك`.
 - `IraqiText(translator=IraqiTranslator(...))` lets you swap the engine.
 
+Translation is **non-cascading**: a dictionary rule only ever matches text that
+was in the input, so a short entry can never re-translate the output of a
+longer one (`ع` used to turn `تُعَالَجُ` into `تُعلئَالَجُ`).
+
+## Development
+
+```bash
+pip install -e ".[dev]"
+pytest                                  # 70 tests, no network needed
+```
+
+## Releasing
+
+`dist/` is a build artifact and is **not** tracked in git — build it fresh, or
+you will ship whatever was committed there last:
+
+```bash
+rm -rf dist build
+python -m build                        # needs the `dev` extra: pip install -e ".[dev]"
+python -m twine upload dist/*
+```
+
+Bump `version` in `pyproject.toml` **and** `__version__` in
+`src/iraqitext/__init__.py` first; PyPI refuses a re-upload of a version that
+already exists.
+
+Note that only `iraqitext/` is packaged. `packages.find` is pinned to
+`include = ["iraqitext*"]` on purpose — without it, any stray directory under
+`src/` (an accidental virtualenv, say) is discovered as a top-level package and
+ends up in the exported metadata.
+
 ## Roadmap
 
 - [x] Iraqi ↔ MSA translation
