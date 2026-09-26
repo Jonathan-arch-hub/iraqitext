@@ -4,6 +4,7 @@ Covers backward compatibility of the 0.1 API (IraqiTranslator) plus the new
 NLP surface: normalize, tokenize, detect and the unified IraqiText API.
 """
 import json
+import re
 from pathlib import Path
 
 import pytest
@@ -20,6 +21,7 @@ from iraqitext import (
     tokenize,
     word_tokenize,
 )
+from iraqitext.translator import _apply
 
 DICTIONARY_PATH = (
     Path(__file__).resolve().parent.parent / "src" / "iraqitext" / "dictionary.json"
@@ -84,6 +86,39 @@ class TestTranslatorCompat:
         old_t = IraqiTranslator(strict_spaces=True)
         for value in set(dictionary.values()):
             assert new_t.to_iraqi(value) == old_t.to_iraqi(value), value
+
+    def test_translation_is_not_re_translated(self):
+        """A rule must only match text that was in the *input*.
+
+        Regression guard for the cascading-substitution bug: rules used to be
+        replayed over the whole text, so a short entry rewrote the output of a
+        longer one (``ع`` turned ``تُعَالَجُ`` into ``تُعلئَالَجُ``).
+        """
+        rules = [
+            (re.compile(r"long"), "Replacement"),
+            (re.compile(r"l"), "X"),  # must not fire inside "Replacement"
+        ]
+        assert _apply("long", rules) == "Replacement"
+        # a rule matching the *input* is unaffected by substitution order
+        assert _apply("l", rules) == "X"
+
+    def test_dictionary_entries_are_not_rewritten_by_shorter_keys(self):
+        """Every dictionary entry must translate to exactly its stored value.
+
+        Guards against a short entry silently re-translating the output of a
+        longer one, which is how ``تنحل`` used to come out as ``تُعلئَالَجُ``.
+        """
+        dictionary = json.loads(DICTIONARY_PATH.read_text(encoding="utf-8"))
+        t = IraqiTranslator()
+        mismatched = {
+            key: (value, t.to_fusha(key))
+            for key, value in dictionary.items()
+            if t.to_fusha(key) != value
+        }
+        # Known, tolerated ambiguity: the tolerant matcher folds ه/ة and alef
+        # variants, so these pairs share one pattern and cannot both be honoured.
+        known = {"أبد", "إبد", "أنسى", "انسى", "عدة", "عده", "قوطيه", "قوطية"}
+        assert set(mismatched) <= known, mismatched
 
     def test_clitics_opt_in(self):
         t = IraqiTranslator(clitics=True)

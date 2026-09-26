@@ -3,6 +3,8 @@
 A lightweight, pattern-based word/phrase matcher with **no dependencies**:
 
 * entries are tried longest-first so ``شكو ماكو`` wins over ``شكو``;
+* translation is **non-cascading**: a rule only ever matches text that was in
+  the input, so a translation is never re-translated by a shorter entry;
 * the default ``(?<!\\w) ... (?!\\w)`` boundaries mean a dictionary entry
   matches even when directly attached to punctuation: ``شلونك؟``,
   ``(شلونك)``, ``شلونك،``. Pass ``strict_spaces=True`` to restore the old
@@ -61,19 +63,49 @@ def _boundaries(boundary: str) -> tuple[str, str]:
 def _compile(pairs, boundary: str = "word"):
     pre, post = _boundaries(boundary)
     return [
-        (re.compile(pre + flexible_pattern(pattern) + post), _plain_replacer(replacement))
+        (re.compile(pre + flexible_pattern(pattern) + post), replacement)
         for pattern, replacement in pairs
     ]
 
 
-def _plain_replacer(replacement: str):
-    return lambda match: replacement
+# Replacements are parked behind a ``\x00<n>\x00`` sentinel while the remaining
+# rules run, then restored in one go at the end of :func:`_apply`.
+_PLACEHOLDER_RE = re.compile("\x00([0-9]+)\x00")
 
 
 def _apply(text: str, rules) -> str:
-    for regex, replacer in rules:
-        text = regex.sub(replacer, text)
-    return text
+    """Apply every rule in one **non-cascading** pass.
+
+    ``rules`` is ordered longest-key-first and each rule still sees the whole
+    text, but every replacement is hidden behind a sentinel while the
+    remaining rules run. A rule can therefore only match characters that were
+    present in the *input*; a translation is never translated again by a later
+    rule.
+
+    Without this, a short entry silently rewrites the output of a longer one:
+    with ``غير`` -> ``سوى`` and ``ثقيل دم`` -> ``غير مرح`` in the dictionary,
+    the naive cascade turns ``ثقيل دم`` into ``سوى مرح`` because the ``غير``
+    produced by the first rule is re-matched by the second.
+    """
+    if "\x00" in text:
+        # Defensive: a literal NUL in the input would be indistinguishable from
+        # a sentinel. Double it so the placeholder pattern cannot match it.
+        text = text.replace("\x00", "\x00\x00")
+
+    replaced: list[str] = []
+
+    for regex, replacement in rules:
+        text = regex.sub(
+            lambda _match, value=replacement: _park(replaced, value), text
+        )
+
+    text = _PLACEHOLDER_RE.sub(lambda m: replaced[int(m.group(1))], text)
+    return text.replace("\x00\x00", "\x00") if "\x00" in text else text
+
+
+def _park(replaced: list[str], value: str) -> str:
+    replaced.append(value)
+    return "\x00%d\x00" % (len(replaced) - 1)
 
 
 _CLITIC_WORD_RE = re.compile(
