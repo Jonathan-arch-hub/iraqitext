@@ -30,6 +30,10 @@ package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
+# Restrict discovery to the library itself. Without this, any stray directory
+# under src/ (an accidental virtualenv, a stray checkout, ...) is picked up as
+# a top-level package and ends up in the exported metadata.
+include = ["iraqitext*"]
 
 [tool.setuptools.package-data]
 iraqitext = ["dictionary.json"]
