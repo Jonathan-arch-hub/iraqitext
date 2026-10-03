@@ -1,0 +1,595 @@
+{
+  "version": "1.0",
+  "license": "CC0-1.0 (hand-written, not copied from any printed dictionary)",
+  "about": [
+    "Structured companion to dictionary.json. An entry is a JSON object so new",
+    "words can carry a type, a dialect region, an example, a source and a",
+    "confidence instead of living in a flat one-word-one-string map.",
+    "",
+    "Fields:",
+    "  id         optional stable id, defaults to the iraqi text",
+    "  iraqi      the Iraqi surface form (may contain spaces = a phrase)",
+    "  fusha      the MSA rendering",
+    "  type       word | phrase | clitic | pronoun | particle | function",
+    "  region     one or more of baghdad / south / mosul / west / general",
+    "  tags       free-form labels used by the coverage report",
+    "  example    a short Iraqi sentence showing the entry in context",
+    "  source     where the rendering comes from (manual, reviewed, corpus)",
+    "  confidence 0..1, how sure we are of the rendering",
+    "  override   true when the entry deliberately replaces a dictionary.json",
+    "            value (documented, so validate.py can list every override)",
+    "  note       why the entry exists",
+    "",
+    "Spelling rule: no entry and no example carries tashkeel.  normalize()",
+    "removes it before matching and a mark is not a word boundary, so the data",
+    "is written «خدام» and «كنور».  A shadda in dictionary.json is different —",
+    "there it separates two words (سدة «a dam» vs سدّه «he sealed it») and is",
+    "therefore kept."
+  ],
+  "entries": [
+    {
+      "id": "prep.ldawam",
+      "iraqi": "للدوام",
+      "fusha": "إلى العمل",
+      "type": "clitic",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "preposition",
+        "l-clitic",
+        "work"
+      ],
+      "example": "أروح للدوام باچر",
+      "source": "manual",
+      "confidence": 0.95,
+      "note": "ل + الدوام written as one word; without it the sentence loses its destination"
+    },
+    {
+      "id": "prep.lbayt",
+      "iraqi": "للبيت",
+      "fusha": "إلى البيت",
+      "type": "clitic",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "preposition",
+        "l-clitic",
+        "home"
+      ],
+      "example": "راح للبيت",
+      "source": "manual",
+      "confidence": 0.95
+    },
+    {
+      "id": "prep.llmsh",
+      "iraqi": "للمدرسة",
+      "fusha": "إلى المدرسة",
+      "type": "clitic",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "preposition",
+        "l-clitic",
+        "school"
+      ],
+      "example": "راحت للمدرسة",
+      "source": "manual",
+      "confidence": 0.95
+    },
+    {
+      "id": "prep.llshghl",
+      "iraqi": "للشغل",
+      "fusha": "إلى العمل",
+      "type": "clitic",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "preposition",
+        "l-clitic",
+        "work"
+      ],
+      "example": "نروح للشغل",
+      "source": "manual",
+      "confidence": 0.95
+    },
+    {
+      "id": "prep.lkura",
+      "iraqi": "للكرة",
+      "fusha": "إلى الكرة",
+      "type": "clitic",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "preposition",
+        "l-clitic",
+        "sport"
+      ],
+      "example": "رحت للكرة",
+      "source": "manual",
+      "confidence": 0.9
+    },
+    {
+      "id": "verb.sharr",
+      "iraqi": "شصار",
+      "fusha": "بما حدث",
+      "type": "word",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "verb",
+        "شطار"
+      ],
+      "example": "راح أگلك شصار",
+      "source": "manual",
+      "confidence": 0.85,
+      "override": true,
+      "note": "dictionary.json says «ماذا حدث», which only works when شصار stands alone; inside a clause Iraqi شصار is relative, so «بما حدث» is the right reading"
+    },
+    {
+      "id": "verb.tachaXXar",
+      "iraqi": "تأخر",
+      "fusha": "تتأخر",
+      "type": "word",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "verb",
+        "ii-form"
+      ],
+      "example": "لا تأخر علينا",
+      "source": "manual",
+      "confidence": 0.9,
+      "override": true,
+      "note": "the imperative «تأخر» and the ii-form «تتأخر» are the same key in Iraqi; the bare form is the imperative"
+    },
+    {
+      "id": "phrase.khalas",
+      "iraqi": "خلاص",
+      "fusha": "حسنا",
+      "type": "phrase",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "discourse"
+      ],
+      "example": "خلاص، فاهم",
+      "source": "manual",
+      "confidence": 0.8,
+      "note": "poly-function: «تمام /Enough /حسنا»"
+    },
+    {
+      "id": "particle.yallah",
+      "iraqi": "يالله",
+      "fusha": "هيّا",
+      "type": "particle",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "discourse",
+        "imperative"
+      ],
+      "example": "يالله نروح",
+      "source": "manual",
+      "confidence": 0.85
+    },
+    {
+      "id": "particle.shukran",
+      "iraqi": "شكرا",
+      "fusha": "شكراً",
+      "type": "particle",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "discourse"
+      ],
+      "example": "شكرا على المساعدة",
+      "source": "manual",
+      "confidence": 0.95
+    },
+    {
+      "id": "phrase.afaa",
+      "iraqi": "عفا",
+      "fusha": "عفواً",
+      "type": "phrase",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "discourse"
+      ],
+      "example": "يا معلم، عفا",
+      "source": "manual",
+      "confidence": 0.9
+    },
+    {
+      "id": "adv.wen",
+      "iraqi": "وين",
+      "fusha": "أين",
+      "type": "word",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "question"
+      ],
+      "example": "وين رايح؟",
+      "source": "manual",
+      "confidence": 0.95,
+      "note": "also in dictionary.json; duplicated so the lexicon alone is a usable dataset"
+    },
+    {
+      "id": "adv.bakr",
+      "iraqi": "بكرة",
+      "fusha": "غداً",
+      "type": "word",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "time"
+      ],
+      "example": "نشوفك بكره",
+      "source": "manual",
+      "confidence": 0.9
+    },
+    {
+      "id": "adv.ams",
+      "iraqi": "امس",
+      "fusha": "أمس",
+      "type": "word",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "time"
+      ],
+      "example": "شفته امس",
+      "source": "manual",
+      "confidence": 0.95
+    },
+    {
+      "id": "adv.shwaya",
+      "iraqi": "شوية",
+      "fusha": "قليلاً",
+      "type": "word",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "degree"
+      ],
+      "example": "استنى شوية",
+      "source": "manual",
+      "confidence": 0.9
+    },
+    {
+      "id": "adv.ktir",
+      "iraqi": "كتير",
+      "fusha": "كثيراً",
+      "type": "word",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "degree"
+      ],
+      "example": "شكرا كتير",
+      "source": "manual",
+      "confidence": 0.9
+    },
+    {
+      "id": "adv.illa",
+      "iraqi": "عل",
+      "fusha": "على",
+      "type": "clitic",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "preposition"
+      ],
+      "example": "عل التيمن",
+      "source": "manual",
+      "confidence": 0.8,
+      "note": "short alif-less form of على, still written in Iraqi print"
+    },
+    {
+      "id": "pron.enti_m",
+      "iraqi": "إنت",
+      "fusha": "أنت",
+      "type": "pronoun",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "2ms"
+      ],
+      "example": "إنت شكون؟",
+      "source": "manual",
+      "confidence": 0.95
+    },
+    {
+      "id": "pron.enti_f",
+      "iraqi": "إنتي",
+      "fusha": "أنتِ",
+      "type": "pronoun",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "2fs"
+      ],
+      "example": "إنتي وين رايحة؟",
+      "source": "manual",
+      "confidence": 0.95
+    },
+    {
+      "id": "pron.entu",
+      "iraqi": "إنتو",
+      "fusha": "أنتم",
+      "type": "pronoun",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "2pl"
+      ],
+      "example": "إنتو متفاهمين؟",
+      "source": "manual",
+      "confidence": 0.95
+    },
+    {
+      "id": "pron.eHna",
+      "iraqi": "إحنا",
+      "fusha": "نحن",
+      "type": "pronoun",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "1pl"
+      ],
+      "example": "إحنا نروح بكرة",
+      "source": "manual",
+      "confidence": 0.95
+    },
+    {
+      "id": "pron.huwa",
+      "iraqi": "هوه",
+      "fusha": "هو",
+      "type": "pronoun",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "3ms"
+      ],
+      "example": "هوه أخوي",
+      "source": "manual",
+      "confidence": 0.95
+    },
+    {
+      "id": "pron.hiya",
+      "iraqi": "هيه",
+      "fusha": "هي",
+      "type": "pronoun",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "3fs"
+      ],
+      "example": "هيه أمي",
+      "source": "manual",
+      "confidence": 0.95
+    },
+    {
+      "id": "neg.maku",
+      "iraqi": "ماكو",
+      "fusha": "لا يوجد",
+      "type": "particle",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "negation",
+        "existential"
+      ],
+      "example": "ماكو مشكلة",
+      "source": "manual",
+      "confidence": 0.95
+    },
+    {
+      "id": "neg.mA_fi",
+      "iraqi": "مافي",
+      "fusha": "ليس هناك",
+      "type": "particle",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "negation",
+        "existential"
+      ],
+      "example": "مافي زيد",
+      "source": "manual",
+      "confidence": 0.85
+    },
+    {
+      "id": "neg.maY",
+      "iraqi": "ما أريد",
+      "fusha": "لا أريد",
+      "type": "phrase",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "negation"
+      ],
+      "example": "ما أريد، شكرا",
+      "source": "manual",
+      "confidence": 0.9,
+      "note": "the two-token form; the single ما + verb is handled by the negation composition"
+    },
+    {
+      "id": "south.nbshab",
+      "iraqi": "نشف",
+      "fusha": "انزف",
+      "type": "word",
+      "region": [
+        "south"
+      ],
+      "tags": [
+        "verb",
+        "blood"
+      ],
+      "example": "راسه نشف",
+      "source": "manual",
+      "confidence": 0.7,
+      "note": "southern Iraqi «نشف» means to bleed; the Baghdadi reading is «نزف» and the general dictionary already carries «جف» for drying up, so this entry overrides it for the south only",
+      "override": true
+    },
+    {
+      "id": "mosul.keef",
+      "iraqi": "كيف هسة",
+      "fusha": "كيف الآن",
+      "type": "phrase",
+      "region": [
+        "mosul"
+      ],
+      "tags": [
+        "hse",
+        "question"
+      ],
+      "example": "كيف هسة؟",
+      "source": "manual",
+      "confidence": 0.7,
+      "note": "Nineveh writes «الآن» as «هسة»; the entry is kept for Mosul so the spelling is not offered as the general Iraqi reading"
+    },
+    {
+      "id": "baghdad.mub",
+      "iraqi": "خدام",
+      "fusha": "عمّال",
+      "type": "word",
+      "region": [
+        "baghdad"
+      ],
+      "tags": [
+        "labour"
+      ],
+      "example": "خدام عندنا",
+      "source": "manual",
+      "confidence": 0.6,
+      "note": "Iraqi خدّام/عمّال"
+    },
+    {
+      "id": "west.ganjoor",
+      "iraqi": "كنور",
+      "fusha": "مصباح",
+      "type": "word",
+      "region": [
+        "west",
+        "baghdad"
+      ],
+      "tags": [
+        "noun",
+        "light"
+      ],
+      "example": "هذا كنور",
+      "source": "manual",
+      "confidence": 0.7
+    },
+    {
+      "id": "word.shkun",
+      "iraqi": "شكون",
+      "fusha": "من",
+      "type": "word",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "question"
+      ],
+      "example": "شكون هسه؟",
+      "source": "manual",
+      "confidence": 0.9,
+      "note": "the interrogative pronoun; MSA has no single-word equivalent"
+    },
+    {
+      "id": "word.raayiha",
+      "iraqi": "رايحة",
+      "fusha": "ذاهبة",
+      "type": "word",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "participle"
+      ],
+      "example": "هي رايحة على السوق",
+      "source": "manual",
+      "confidence": 0.85,
+      "note": "the Iraqi participle of راح; MSA needs the feminine of ذهب"
+    },
+    {
+      "id": "word.hanni",
+      "iraqi": "هني",
+      "fusha": "هنا",
+      "type": "adverb",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "deictic"
+      ],
+      "example": "هني المكتبة",
+      "source": "manual",
+      "confidence": 0.9,
+      "note": "MSA is هنا; the Iraqi form doubles the ن"
+    },
+    {
+      "id": "word.jaay",
+      "iraqi": "جاي",
+      "fusha": "قادم",
+      "type": "word",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "participle"
+      ],
+      "example": "هو جاي معي",
+      "source": "manual",
+      "confidence": 0.85,
+      "override": true,
+      "note": "corrects dictionary.json, which had جاي -> يقوم «stands»; جاي is the present participle «coming», and the marker table in morphology.json already reads it as قادم"
+    },
+    {
+      "id": "word.jaaya",
+      "iraqi": "جاية",
+      "fusha": "قادمة",
+      "type": "word",
+      "region": [
+        "general"
+      ],
+      "tags": [
+        "participle"
+      ],
+      "example": "هي جاية بكرة",
+      "source": "manual",
+      "confidence": 0.85,
+      "override": true,
+      "note": "the feminine of جاي; dictionary.json is overridden for the same reason"
+    }
+  ]
+}

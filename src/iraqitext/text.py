@@ -134,10 +134,32 @@ class IraqiText:
     # ------------------------------------------------------------------ #
     # Translation (delegates to IraqiTranslator)
     # ------------------------------------------------------------------ #
-    def to_fusha(self, text: str) -> str:
-        """Translate Iraqi dialect text to Modern Standard Arabic."""
-        return self.translator.to_fusha(text)
+    def to_fusha(self, text: str, *, report: bool = False):
+        """Translate Iraqi dialect text to Modern Standard Arabic.
+
+        With ``report=True`` a :class:`~iraqitext.coverage.TranslationReport`
+        comes back instead of a string, listing the words that were left
+        untranslated.
+        """
+        return self.translator.to_fusha(text, report=report)
 
     def to_iraqi(self, text: str) -> str:
         """Translate Modern Standard Arabic text to Iraqi dialect."""
         return self.translator.to_iraqi(text)
+
+    # ------------------------------------------------------------------ #
+    # Coverage
+    # ------------------------------------------------------------------ #
+    def explain(self, text: str):
+        """Translate ``text`` and return a :class:`TranslationReport`."""
+        return self.translator.to_fusha(text, report=True)
+
+    def coverage_stats(self) -> dict:
+        """Counts of phrases / words / verbs / forms the engine supports."""
+        return self.translator.coverage_stats()
+
+    def coverage_log(self, *, minimum: int = 1):
+        """A fresh :class:`~iraqitext.coverage.CoverageLog` (the review list)."""
+        from .coverage import CoverageLog
+
+        return CoverageLog(minimum=minimum)

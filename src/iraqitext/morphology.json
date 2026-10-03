@@ -1,0 +1,1503 @@
+{
+  "version": 1,
+  "about": "Hand-written Iraqi Arabic morphology: pronouns, negation, tense/aspect markers, clitics, object suffixes and verb paradigms. Nothing here is copied from a copyrighted dictionary; every entry is a small human-authored paradigm that the engine expands into thousands of surface forms.",
+  "license": "MIT (same as the package)",
+  "msa_prefixes": {
+    "1sg": "أ",
+    "2ms": "ت",
+    "2fs": "ت",
+    "3ms": "ي",
+    "3fs": "ت",
+    "1pl": "ن",
+    "2pl": "ت",
+    "3pl": "ي"
+  },
+  "msa_gender_suffix": {
+    "2fs": "ين"
+  },
+  "msa_number_suffix": {
+    "2pl": "ون",
+    "3pl": "ون"
+  },
+  "msa_past_subject": {
+    "3ms": "",
+    "2ms": "ت",
+    "2fs": "ت",
+    "3fs": "ت",
+    "1pl": "نا",
+    "2pl": "تم",
+    "3pl": "وا"
+  },
+  "person_prefixes": {
+    "أ": {
+      "person": "1sg",
+      "note": "1sg: أروح / أگدر"
+    },
+    "ا": {
+      "person": "1sg",
+      "note": "1sg without hamza: اكول / اشتغل"
+    },
+    "ت": {
+      "person": "2ms",
+      "note": "2sg masculine: تروح / تگدر"
+    },
+    "ن": {
+      "person": "1pl",
+      "note": "1pl: نروح / نگدر"
+    },
+    "ي": {
+      "person": "3ms",
+      "note": "3sg: يروح / يگدر; the 3pl adds a plural marker (يروحون)"
+    }
+  },
+  "plural_suffixes": {
+    "ون": {
+      "person": "3pl",
+      "note": "يروحون / تشتغلون"
+    },
+    "ين": {
+      "person": "3pl",
+      "note": "يگدرين"
+    },
+    "هه": {
+      "person": "3pl",
+      "note": "يروحهه"
+    }
+  },
+  "subject_suffixes_present": {
+    "ين": {
+      "person": "2fs",
+      "note": "2fs present: أروحين / تعرفين → تذهبين / تعرفين"
+    },
+    "ي": {
+      "person": "1sg",
+      "note": "emphatic 1sg: أروحي → أذهب أنا"
+    },
+    "ن": {
+      "person": "1pl",
+      "note": "emphatic 1pl: نروحن → نذهب نحن"
+    },
+    "وا": {
+      "person": "3pl",
+      "note": "subjunctive 3pl: روحوا → يروحون"
+    }
+  },
+  "subject_suffixes_past": {
+    "ت": {
+      "person": "2ms",
+      "note": "راحت → ذهبت (same MSA form as 3fs)"
+    },
+    "نا": {
+      "person": "1pl",
+      "note": "راحنا → ذهبنا"
+    },
+    "وا": {
+      "person": "3pl",
+      "note": "راحوا → ذهبوا"
+    },
+    "توا": {
+      "person": "2pl",
+      "note": "راحتوا →ذهبتم"
+    }
+  },
+  "proclitics": {
+    "و": {
+      "msa": "و",
+      "type": "conjunction"
+    },
+    "ف": {
+      "msa": "ف",
+      "type": "conjunction"
+    },
+    "ك": {
+      "msa": "ك",
+      "type": "conjunction"
+    },
+    "ل": {
+      "msa": "ل",
+      "type": "preposition"
+    }
+  },
+  "object_suffixes": {
+    "ني": {
+      "msa": "ني",
+      "person": "1sg"
+    },
+    "ك": {
+      "msa": "ك",
+      "person": "2ms"
+    },
+    "چ": {
+      "msa": "ك",
+      "person": "2fs"
+    },
+    "ه": {
+      "msa": "ه",
+      "person": "3ms"
+    },
+    "ها": {
+      "msa": "ها",
+      "person": "3fs"
+    },
+    "هم": {
+      "msa": "هم",
+      "person": "3pl"
+    },
+    "هن": {
+      "msa": "هن",
+      "person": "3pl"
+    },
+    "نا": {
+      "msa": "نا",
+      "person": "1pl"
+    },
+    "نهم": {
+      "msa": "هم",
+      "person": "3pl",
+      "subject": "3pl",
+      "note": "ن- plural marker + 3pl object: يگدرنهم"
+    },
+    "نها": {
+      "msa": "ها",
+      "person": "3pl",
+      "subject": "3pl",
+      "note": "يگدرنها"
+    },
+    "نك": {
+      "msa": "كم",
+      "person": "2pl",
+      "subject": "2pl",
+      "note": "تعرفنكم"
+    },
+    "نچ": {
+      "msa": "كن",
+      "person": "2pl",
+      "subject": "2pl",
+      "note": "تعرفنچن"
+    },
+    "لك": {
+      "msa": "لك",
+      "person": "2ms",
+      "note": "ل + 2ms object"
+    },
+    "لچ": {
+      "msa": "لك",
+      "person": "2fs",
+      "note": "ل + 2fs object"
+    },
+    "له": {
+      "msa": "له",
+      "person": "3ms",
+      "note": "ل + 3ms object"
+    },
+    "لها": {
+      "msa": "لها",
+      "person": "3fs",
+      "note": "ل + 3fs object"
+    },
+    "لهم": {
+      "msa": "لهم",
+      "person": "3pl",
+      "note": "ل + 3pl object"
+    },
+    "لني": {
+      "msa": "لي",
+      "person": "1sg",
+      "note": "ل + 1sg object"
+    },
+    "وه": {
+      "msa": "ه",
+      "person": "3ms",
+      "note": "و- + 3ms object: أعرفوه"
+    },
+    "وها": {
+      "msa": "ها",
+      "person": "3fs",
+      "note": "أعرفوها"
+    },
+    "وهم": {
+      "msa": "هم",
+      "person": "3pl",
+      "note": "أعرفوهم"
+    },
+    "وني": {
+      "msa": "ني",
+      "person": "1sg",
+      "note": "أروحوني"
+    },
+    "وك": {
+      "msa": "ك",
+      "person": "2ms",
+      "note": "أگولوك"
+    },
+    "وچ": {
+      "msa": "ك",
+      "person": "2fs",
+      "note": "أگولوچ"
+    },
+    "ونا": {
+      "msa": "نا",
+      "person": "1pl",
+      "note": "أگولونا"
+    },
+    "ونك": {
+      "msa": "كم",
+      "person": "2pl",
+      "note": "أگولونكم"
+    },
+    "وهن": {
+      "msa": "هن",
+      "person": "3pl",
+      "note": "أگولوهن"
+    }
+  },
+  "pronouns": {
+    "أني": {
+      "msa": "أنا",
+      "person": "1sg"
+    },
+    "اني": {
+      "msa": "أنا",
+      "person": "1sg"
+    },
+    "إنت": {
+      "msa": "أنت",
+      "person": "2ms"
+    },
+    "انتي": {
+      "msa": "أنت",
+      "person": "2ms"
+    },
+    "إنتي": {
+      "msa": "أنتِ",
+      "person": "2fs"
+    },
+    "إنتو": {
+      "msa": "أنتم",
+      "person": "2pl"
+    },
+    "إنتن": {
+      "msa": "أنتن",
+      "person": "2pl"
+    },
+    "إحنا": {
+      "msa": "نحن",
+      "person": "1pl"
+    },
+    "احنا": {
+      "msa": "نحن",
+      "person": "1pl"
+    },
+    "هوه": {
+      "msa": "هو",
+      "person": "3ms"
+    },
+    "هيه": {
+      "msa": "هي",
+      "person": "3fs"
+    },
+    "هم": {
+      "msa": "هم",
+      "person": "3pl"
+    },
+    "هه": {
+      "msa": "هو",
+      "person": "3ms"
+    }
+  },
+  "negation": {
+    "ما": {
+      "scope": "verb",
+      "msa_present": "لا",
+      "msa_past": "ما"
+    },
+    "ماكو": {
+      "scope": "existential",
+      "msa": "لا يوجد"
+    },
+    "ماكوش": {
+      "scope": "existential",
+      "msa": "لا يوجد"
+    },
+    "مو": {
+      "scope": "nominal",
+      "msa": "لا",
+      "note": "particles and nouns (مو زين = ليس جيداً); never treated as a bare verb negation"
+    }
+  },
+  "markers": {
+    "future": {
+      "راح": {
+        "msa": "س",
+        "placement": "verb_prefix"
+      },
+      "رح": {
+        "msa": "س",
+        "placement": "verb_prefix"
+      }
+    },
+    "present": {
+      "دا": {
+        "msa": "الآن",
+        "placement": "clause_final"
+      },
+      "داك": {
+        "msa": "الآن",
+        "placement": "clause_final"
+      }
+    },
+    "participial": {
+      "جاي": {
+        "msa": "قادم",
+        "placement": "word"
+      },
+      "جاية": {
+        "msa": "قادمة",
+        "placement": "word"
+      }
+    }
+  },
+  "compositions": [
+    {
+      "id": "future.sara",
+      "op": "future",
+      "markers": [
+        "راح",
+        "رح"
+      ],
+      "msa": "س",
+      "placement": "verb_prefix",
+      "requires_verb": true,
+      "note": "راح + imperfective verb → سـ + the same verb. The marker word disappears (dictionary.json maps a bare راح to سوف).",
+      "example": {
+        "in": "راح أگلك شصار",
+        "out": "سأخبرك بما حدث",
+        "level": "sentence"
+      }
+    },
+    {
+      "id": "negation.mahood",
+      "op": "negation",
+      "markers": [
+        "ما"
+      ],
+      "msa_present": "لا",
+      "msa_past": "ما",
+      "msa_single_past": "لم",
+      "complement_present": "أن",
+      "complement_past": "لـ",
+      "requires_verb": true,
+      "note": "ما + present verb (+ verb) → لا + imperfective (+ أن + imperfective). ما + past verb (+ verb) → ما + perfective (+ لـ + imperfective).",
+      "example": {
+        "in": "ما نكدر نجي",
+        "out": "لا نستطيع أن نأتي",
+        "level": "sentence"
+      }
+    },
+    {
+      "id": "present.da",
+      "op": "present_marker",
+      "markers": [
+        "دا",
+        "داك"
+      ],
+      "msa": "الآن",
+      "placement": "clause_final",
+      "requires_verb": true,
+      "note": "Iraqi clauses start with دا, MSA puts الآن at the end: دا أحچي وياك → أتحدث معك الآن (same order the fixed entries دا أروح / دا أحچي use).",
+      "example": {
+        "in": "دا أحچي وياك",
+        "out": "أتحدث معك الآن",
+        "level": "sentence"
+      }
+    }
+  ],
+  "verb_like": [
+    "أريد",
+    "تريد",
+    "نريد",
+    "يريد",
+    "أسوي",
+    "تسوي",
+    "نسوي",
+    "يسوي",
+    "ينفع",
+    "خلي",
+    "خل",
+    "خلّي",
+    "خلوا",
+    "خلينا",
+    "تعال",
+    "تعالي",
+    "اكفني",
+    "ساعدني",
+    "أگول",
+    "گول",
+    "اريد",
+    "اسوي",
+    "تسوي",
+    "خلني",
+    "جيبلي",
+    "وديني"
+  ],
+  "protected": [
+    "سوى",
+    "جبه",
+    "جبهه",
+    "صدر",
+    "ظهر",
+    "راس",
+    "رجل",
+    "درب",
+    "يد",
+    "عين",
+    "كتاب",
+    "كتب",
+    "مدرسة",
+    "مدارس",
+    "جامعة",
+    "شركة",
+    "دائرة",
+    "مستشفى",
+    "سيارة",
+    "باب",
+    "دار",
+    "مكتب",
+    "هاتف",
+    "كمبيوتر",
+    "إنترنت",
+    "ماركت",
+    "شمس",
+    "قمر",
+    "نهر",
+    "بحر",
+    "جبل",
+    "مدينة",
+    "أب",
+    "أم",
+    "أخ",
+    "أخت",
+    "ابن",
+    "بنت",
+    "زوج",
+    "زوجة",
+    "عم",
+    "خال",
+    "عمة",
+    "جد",
+    "جدة",
+    "أريد",
+    "أراد",
+    "أشياء",
+    "شيء",
+    "موضوع",
+    "لون",
+    "شكل",
+    "وقت",
+    "نهار",
+    "ليلة",
+    "صباح",
+    "مساء",
+    "وجه",
+    "فوق",
+    "تحت",
+    "حول",
+    "خلف",
+    "قدام",
+    "أرض",
+    "بيت",
+    "شجرة",
+    "نار",
+    "ماء",
+    "هوا",
+    "صوت",
+    "كلام",
+    "حال",
+    "نفس",
+    "دم",
+    "لسان",
+    "رقم",
+    "ثوب",
+    "خبز",
+    "لحم",
+    "سمك",
+    "ماء"
+  ],
+  "shared_msa": [
+    "في",
+    "على",
+    "إلى",
+    "عن",
+    "من",
+    "مع",
+    "هذا",
+    "هذه",
+    "ذلك",
+    "التي",
+    "الذي",
+    "كان",
+    "كانت",
+    "يكون",
+    "قد",
+    "لقد",
+    "ثم",
+    "أو",
+    "لكن",
+    "حتى",
+    "بين",
+    "بعد",
+    "قبل",
+    "كل",
+    "بعض",
+    "جدا",
+    "أيضا",
+    "هنا",
+    "هناك",
+    "الآن",
+    "اليوم",
+    "غدا",
+    "أمس",
+    "ليلا",
+    "صباحا",
+    "مساء",
+    "سنة",
+    "شهر",
+    "يوم",
+    "ساعة",
+    "دقيقة",
+    "رجل",
+    "امرأة",
+    "ولد",
+    "بنت",
+    "بيت",
+    "سيارة",
+    "مال",
+    "عمل",
+    "حياة",
+    "دنيا",
+    "آخرة",
+    "نفس",
+    "روح",
+    "قلب",
+    "عين",
+    "يد",
+    "رأس",
+    "وجه",
+    "صوت",
+    "كلام",
+    "أمر",
+    "حال",
+    "وقت",
+    "مكان",
+    "قسم",
+    "جزء",
+    "نصف",
+    "كلمة",
+    "جملة",
+    "أمي",
+    "أبي",
+    "أختي",
+    "أخواتي",
+    "جدتي",
+    "جدي",
+    "خالتي",
+    "عمي",
+    "عمتي",
+    "متعبة",
+    "مفكر",
+    "متفاهمين",
+    "مبسوط",
+    "مسرور",
+    "متأكد",
+    "أول",
+    "آخر",
+    "كتابي",
+    "بمدرسة",
+    "أخوي"
+  ],
+  "proper_nouns": [
+    "بغداد",
+    "البصرة",
+    "الموصل",
+    "أربيل",
+    "النجف",
+    "كربلاء",
+    "كركوك",
+    "الأنبار",
+    "ديالى",
+    "واسط",
+    "بابل",
+    "الديوانية",
+    "الناصرية",
+    "السليمانية",
+    "دهوك",
+    "الرصافة",
+    "الكرادة",
+    "المنصور",
+    "الكرخ",
+    "الدورة",
+    "اليرموك",
+    "الشعلة",
+    "أبو غريب",
+    "زيونة",
+    "حيدر",
+    "كاظم",
+    "جعفر",
+    "حسن",
+    "حسين",
+    "علي"
+  ],
+  "verbs": {
+    "راح": {
+      "msa_root": "ذهب",
+      "msa_stems": {
+        "present": "ذهب",
+        "past": "ذهب"
+      },
+      "iraqi_stems": {
+        "present": "روح",
+        "past": "راح"
+      },
+      "alt_stems": {
+        "past": [
+          "رح"
+        ]
+      },
+      "allow_bare": "3ms",
+      "drop_alef_past": true,
+      "region": [
+        "general"
+      ],
+      "note": "أروح/تروح/يروح/نروح → أذهب/تذهب/يذهب/نذهب؛ راحنا/راحوا/راحتوا → ذهبنا/ذهبوا/ذهبتم؛ the past stem also drops its alef, so رحت/رحن are «she/it went»",
+      "example": {
+        "in": "تروح",
+        "out": "تذهب",
+        "level": "token"
+      }
+    },
+    "جي": {
+      "msa_root": "أتى",
+      "forms": {
+        "جي": "جاء",
+        "جاي": "قادم",
+        "أجي": "آتي",
+        "اجي": "آتي",
+        "تجي": "تأتي",
+        "نجي": "نأتي",
+        "يجي": "يأتي",
+        "جيت": "أتيت",
+        "جينا": "أتينا",
+        "جيوا": "أتوا",
+        "إجه": "جاء"
+      },
+      "allow_bare": false,
+      "region": [
+        "general"
+      ],
+      "note": "irregular j/y alternation, so the paradigm is listed explicitly",
+      "example": {
+        "in": "نجي",
+        "out": "نأتي",
+        "level": "token"
+      }
+    },
+    "كدر": {
+      "msa_root": "قدر",
+      "msa_stems": {
+        "present": "ستطيع"
+      },
+      "iraqi_stems": {
+        "present": "كدر",
+        "past": "كدر"
+      },
+      "alt_stems": {
+        "present": [
+          "گدر"
+        ],
+        "past": [
+          "گدر"
+        ]
+      },
+      "allow_bare": "3ms",
+      "forms": {
+        "كدر": "استطاع",
+        "كدرت": "استطعت",
+        "كدرنا": "استطعنا",
+        "كدرتوا": "استطعتم"
+      },
+      "region": [
+        "general"
+      ],
+      "note": "iable verb: أكدر/تكدر/يكدر/نكدر → أستطيع/تستطيع/يستطيع/نستطيع",
+      "example": {
+        "in": "نكدر",
+        "out": "نستطيع",
+        "level": "token"
+      }
+    },
+    "راد": {
+      "msa_root": "أراد",
+      "msa_stems": {
+        "present": "ريد"
+      },
+      "iraqi_stems": {
+        "present": "ريد"
+      },
+      "allow_bare": "3ms",
+      "forms": {
+        "راد": "أراد",
+        "راده": "أراده",
+        "رادت": "أرادت",
+        "رادوا": "أرادوا",
+        "ردنا": "أردنا",
+        "رادتوا": "أرادتم"
+      },
+      "region": [
+        "general"
+      ],
+      "note": "present is regular (أريد/تريد/أريد), past is not (راد/رادت/ردنا)",
+      "example": {
+        "in": "راده",
+        "out": "أراده",
+        "level": "token"
+      }
+    },
+    "گال": {
+      "msa_root": "قال",
+      "msa_stems": {
+        "present": "قول",
+        "past": "قال"
+      },
+      "iraqi_stems": {
+        "present": "گول",
+        "past": "گال"
+      },
+      "allow_bare": "3ms",
+      "drop_alef_past": true,
+      "forms": {
+        "گل": "قال",
+        "گلت": "قلت",
+        "گلتي": "قلتِ",
+        "گالت": "قالت",
+        "گلنا": "قلنا",
+        "گلوا": "قالوا",
+        "گلتوا": "قلتم",
+        "گالتوا": "قلن"
+      },
+      "region": [
+        "general"
+      ],
+      "note": "أگول/أگالت/گلت → أقول/قالت/قلت",
+      "example": {
+        "in": "أگول",
+        "out": "أقول",
+        "level": "token"
+      }
+    },
+    "گل": {
+      "msa_root": "أخبر",
+      "msa_stems": {
+        "present": "خبر",
+        "past": "خبر"
+      },
+      "iraqi_stems": {
+        "present": "گل"
+      },
+      "allow_bare": "3ms",
+      "region": [
+        "general"
+      ],
+      "note": "the 'tell' sense of گل: أگلك → أخبرك، گلني → أخبرني",
+      "example": {
+        "in": "أگلك",
+        "out": "أخبرك",
+        "level": "token"
+      }
+    },
+    "شاف": {
+      "msa_root": "رأى",
+      "paradigms": {
+        "present": {
+          "1sg": "أرى",
+          "2ms": "ترى",
+          "2fs": "ترين",
+          "3ms": "يرى",
+          "3fs": "ترى",
+          "1pl": "نرى",
+          "2pl": "ترون",
+          "3pl": "يرون"
+        },
+        "past": {
+          "1sg": "رأيت",
+          "2ms": "رأيت",
+          "2fs": "رأيت",
+          "3ms": "رأى",
+          "3fs": "رأت",
+          "1pl": "رأينا",
+          "2pl": "رأيتم",
+          "3pl": "رأوا"
+        }
+      },
+      "iraqi_stems": {
+        "present": "شوف",
+        "past": "شاف"
+      },
+      "forms": {
+        "شفنا": "رأينا",
+        "شفتها": "رأيتها"
+      },
+      "allow_bare": "3ms",
+      "object_mode": "raa",
+      "region": [
+        "general"
+      ],
+      "note": "defective (ى) verb: أشوفك → أراك، تشوفها → تراها، شفت → رأيت",
+      "example": {
+        "in": "أشوفه",
+        "out": "أراه",
+        "level": "token"
+      }
+    },
+    "أخذ": {
+      "msa_root": "أخذ",
+      "paradigms": {
+        "present": {
+          "1sg": "آخذ",
+          "2ms": "تأخذ",
+          "2fs": "تأخذين",
+          "3ms": "يأخذ",
+          "3fs": "تأخذ",
+          "1pl": "نأخذ",
+          "2pl": "تأخذون",
+          "3pl": "يأخذون"
+        },
+        "past": {
+          "1sg": "أخذت",
+          "2ms": "أخذت",
+          "2fs": "أخذت",
+          "3ms": "أخذ",
+          "3fs": "أخذت",
+          "1pl": "أخذنا",
+          "2pl": "أخذتم",
+          "3pl": "أخذوا"
+        }
+      },
+      "iraqi_stems": {
+        "present": "خذ"
+      },
+      "allow_bare": false,
+      "region": [
+        "general"
+      ],
+      "note": "همزة وصل: آخذ/تأخذ/يأخذ",
+      "example": {
+        "in": "أخذها",
+        "out": "آخذها",
+        "level": "token"
+      }
+    },
+    "نطى": {
+      "msa_root": "انطلق",
+      "msa_stems": {
+        "present": "نطلق",
+        "past": "انطلق"
+      },
+      "msa_prefixes": {
+        "1sg": "ا",
+        "2ms": "ت",
+        "2fs": "ت",
+        "3ms": "ي",
+        "3fs": "ت",
+        "1pl": "ن",
+        "2pl": "ت",
+        "3pl": "ي"
+      },
+      "iraqi_stems": {
+        "present": "نطى"
+      },
+      "allow_bare": false,
+      "forms": {
+        "انطقت": "انطلقت",
+        "انطقتوا": "انطلقتم",
+        "انطوا": "انطلقوا"
+      },
+      "region": [
+        "general"
+      ],
+      "note": "انطى/تنطى/ينطى → انطلق/تنطلق/ينطلق",
+      "example": {
+        "in": "تنطى",
+        "out": "تنطلق",
+        "level": "token"
+      }
+    },
+    "دز": {
+      "msa_root": "أرسل",
+      "msa_stems": {
+        "present": "رسل"
+      },
+      "iraqi_stems": {
+        "present": "دز"
+      },
+      "allow_bare": false,
+      "region": [
+        "general"
+      ],
+      "note": "only the 'send' sense; the 'pay' sense of a bare دز stays with the dictionary entry (ادفع)",
+      "example": {
+        "in": "أدزلك",
+        "out": "أرسل لك",
+        "level": "token"
+      }
+    },
+    "طب": {
+      "msa_root": "دخل",
+      "msa_stems": {
+        "present": "دخل",
+        "past": "دخل"
+      },
+      "iraqi_stems": {
+        "present": "طب",
+        "past": "طب"
+      },
+      "allow_bare": "3ms",
+      "region": [
+        "general"
+      ],
+      "note": "أطب/تطب → أدخل/تدخل؛ طب/طبنا → دخل/دخلنا",
+      "example": {
+        "in": "تطب",
+        "out": "تدخل",
+        "level": "token"
+      }
+    },
+    "طلع": {
+      "msa_root": "خرج",
+      "msa_stems": {
+        "present": "خرج",
+        "past": "خرج"
+      },
+      "iraqi_stems": {
+        "present": "طلع",
+        "past": "طلع"
+      },
+      "allow_bare": "3ms",
+      "drop_alef_past": true,
+      "region": [
+        "general"
+      ],
+      "note": "أطلع/تطلع → أخرج/تخرج؛ طلعنا/طلعوا → خرجنا/خرجوا",
+      "example": {
+        "in": "تطلع",
+        "out": "تخرج",
+        "level": "token"
+      }
+    },
+    "گعد": {
+      "msa_root": "جلس",
+      "msa_stems": {
+        "present": "جلس",
+        "past": "جلس"
+      },
+      "iraqi_stems": {
+        "present": "گعد",
+        "past": "گعد"
+      },
+      "allow_bare": "3ms",
+      "region": [
+        "general"
+      ],
+      "note": "أگعد/تگعد → أجلس/تجلس؛ گعد/گعدوا → جلس/جلسوا",
+      "example": {
+        "in": "گعدوا",
+        "out": "جلسوا",
+        "level": "token"
+      }
+    },
+    "گام": {
+      "msa_root": "قام",
+      "msa_stems": {
+        "present": "قوم",
+        "past": "قام"
+      },
+      "iraqi_stems": {
+        "present": "گوم",
+        "past": "گام"
+      },
+      "allow_bare": "3ms",
+      "drop_alef_past": true,
+      "region": [
+        "general"
+      ],
+      "note": "أگوم/نگوم → أقوم/نقوم؛ گام/گامنا → قام/قمنا",
+      "example": {
+        "in": "نگوم",
+        "out": "نقوم",
+        "level": "token"
+      }
+    },
+    "عرف": {
+      "msa_root": "عرف",
+      "msa_stems": {
+        "present": "عرف",
+        "past": "عرف"
+      },
+      "iraqi_stems": {
+        "present": "عرف",
+        "past": "عرف"
+      },
+      "allow_bare": "3ms",
+      "region": [
+        "general"
+      ],
+      "note": "أعرف/تعرف/يعرف/نعرف; the win is the Iraqi چ object suffix → ك",
+      "example": {
+        "in": "نعرفچ",
+        "out": "نعرفك",
+        "level": "token"
+      }
+    },
+    "سمع": {
+      "msa_root": "سمع",
+      "msa_stems": {
+        "present": "سمع",
+        "past": "سمع"
+      },
+      "iraqi_stems": {
+        "present": "سمع",
+        "past": "سمع"
+      },
+      "allow_bare": "3ms",
+      "region": [
+        "general"
+      ],
+      "note": "أسمع/تسمع/يسمع/نسمع",
+      "example": {
+        "in": "تسمعچ",
+        "out": "تسمعك",
+        "level": "token"
+      }
+    },
+    "چى": {
+      "msa_root": "تحدث",
+      "msa_stems": {
+        "present": "تحدث",
+        "past": "تحدث"
+      },
+      "iraqi_stems": {
+        "present": "حچي",
+        "past": "حچى"
+      },
+      "alt_stems": {
+        "present": [
+          "حچ"
+        ],
+        "past": [
+          "حچ"
+        ]
+      },
+      "allow_bare": "3ms",
+      "region": [
+        "general"
+      ],
+      "note": "أحچي/نحچي/تحچي → أتحدث/نتحدث/تتحدث؛ تحچين/نحچين (2fs drops the و) → تحدثين؛ چى → يتحدث",
+      "example": {
+        "in": "أحچي",
+        "out": "أتحدث",
+        "level": "token"
+      }
+    },
+    "سأل": {
+      "msa_root": "سأل",
+      "msa_stems": {
+        "present": "سأل",
+        "past": "سأل"
+      },
+      "iraqi_stems": {
+        "present": "سأل",
+        "past": "سأل"
+      },
+      "allow_bare": "3ms",
+      "region": [
+        "general"
+      ],
+      "note": "أسأل/تسأل/يسأل/نسأل",
+      "example": {
+        "in": "تسألچ",
+        "out": "تسألك",
+        "level": "token"
+      }
+    },
+    "شتغل": {
+      "msa_root": "اشتغل",
+      "msa_stems": {
+        "present": "شتغل",
+        "past": "اشتغل"
+      },
+      "msa_prefixes": {
+        "1sg": "أ",
+        "2ms": "ت",
+        "2fs": "ت",
+        "3ms": "ي",
+        "3fs": "ت",
+        "1pl": "ن",
+        "2pl": "ت",
+        "3pl": "ي"
+      },
+      "iraqi_stems": {
+        "present": "شتغل",
+        "past": "شتغل"
+      },
+      "allow_bare": "3ms",
+      "region": [
+        "general"
+      ],
+      "note": "اشتغل/تشتغل/يشتغل/نشتغل → يشتغل/تعمل style rewrites are deliberately not attempted",
+      "example": {
+        "in": "تشتغلچ",
+        "out": "تشتغلك",
+        "level": "token"
+      }
+    },
+    "جه": {
+      "msa_root": "تعب",
+      "msa_stems": {
+        "present": "تعب",
+        "past": "تعب"
+      },
+      "iraqi_stems": {
+        "present": "جه",
+        "past": "جه"
+      },
+      "allow_bare": "3ms",
+      "region": [
+        "general"
+      ],
+      "note": "تجه → تتعب، ونجه → نتعب؛ «أجه» is not used as the example because the alef fold makes it identical to «إجه» = «جاء» (a listed form of جي), and a hand-written form always wins over a generated one",
+      "example": {
+        "in": "تجه",
+        "out": "تتعب",
+        "level": "token"
+      }
+    },
+    "خلي": {
+      "msa_root": "ترك",
+      "msa_stems": {
+        "present": "ترك",
+        "past": "ترك"
+      },
+      "iraqi_stems": {
+        "present": "خلي",
+        "past": "خلي"
+      },
+      "allow_bare": "1sg",
+      "bare_tense": "present",
+      "forms": {
+        "خليت": "تركت",
+        "خلينا": "تركنا"
+      },
+      "region": [
+        "general"
+      ],
+      "note": "bare خلي is 1sg (أترك); the 3ms past خلّي carries a shadda and is therefore left to the dictionary",
+      "example": {
+        "in": "خلي",
+        "out": "أترك",
+        "level": "token"
+      }
+    },
+    "سوى": {
+      "msa_root": "فعل",
+      "msa_stems": {
+        "present": "فعل",
+        "past": "فعل"
+      },
+      "iraqi_stems": {
+        "present": "سوي",
+        "past": "سوي"
+      },
+      "allow_bare": false,
+      "region": [
+        "general"
+      ],
+      "note": "bare forms are blocked because على سوى is a preposition, not the verb فعل; the stem is written سوي (the dominant Iraqi spelling) with سوى left to the dictionary",
+      "example": {
+        "in": "تسوي",
+        "out": "تفعل",
+        "level": "token"
+      }
+    },
+    "ساعد": {
+      "msa_root": "ساعد",
+      "msa_stems": {
+        "present": "ساعد",
+        "past": "ساعد"
+      },
+      "iraqi_stems": {
+        "present": "ساعد",
+        "past": "ساعد"
+      },
+      "allow_bare": "3ms",
+      "region": [
+        "general"
+      ],
+      "note": "أساعدك/نساعدهم → أساعدك/نساعدهم; مساعد (noun) never matches because م is not a proclitic",
+      "example": {
+        "in": "أساعده",
+        "out": "أساعده",
+        "level": "token"
+      }
+    },
+    "جب": {
+      "msa_root": "أحضر",
+      "msa_stems": {
+        "present": "حضر",
+        "past": "حضر"
+      },
+      "msa_prefixes": {
+        "1sg": "أ",
+        "2ms": "ت",
+        "2fs": "ت",
+        "3ms": "ي",
+        "3fs": "ت",
+        "1pl": "ن",
+        "2pl": "ت",
+        "3pl": "ي"
+      },
+      "iraqi_stems": {
+        "present": "جب",
+        "past": "جب"
+      },
+      "allow_bare": false,
+      "region": [
+        "general"
+      ],
+      "note": "أجيب/تجيب → أحضر/تحضر; bare جب is blocked (chest)",
+      "example": {
+        "in": "جبت",
+        "out": "حضرت",
+        "level": "token"
+      }
+    },
+    "فهم": {
+      "msa_root": "فهم",
+      "msa_stems": {
+        "present": "فهم",
+        "past": "فهم"
+      },
+      "msa_prefixes": {
+        "1sg": "أ",
+        "2ms": "ت",
+        "2fs": "ت",
+        "3ms": "ي",
+        "3fs": "ت",
+        "1pl": "ن",
+        "2pl": "ت",
+        "3pl": "ي"
+      },
+      "iraqi_stems": {
+        "present": "فهم",
+        "past": "فهم"
+      },
+      "allow_bare": "3ms",
+      "region": [
+        "general"
+      ],
+      "note": "أفهم/أفهمهم/نفهم → أفهم/أفهمهم/نفهم; the explicit form أفتهم (همزة وصل) also covers the spelling in dictionary.json",
+      "example": {
+        "in": "أفهمهم",
+        "out": "أفهمهم",
+        "level": "token"
+      }
+    },
+    "شرگ": {
+      "msa_root": "أعطى",
+      "msa_stems": {
+        "present": "عطى",
+        "past": "عطى"
+      },
+      "msa_prefixes": {
+        "1sg": "أ",
+        "2ms": "ت",
+        "2fs": "ت",
+        "3ms": "ي",
+        "3fs": "ت",
+        "1pl": "ن",
+        "2pl": "ت",
+        "3pl": "ي"
+      },
+      "msa_paradigm": "defective stem: أعطى/تعطى/يعطى/نعطى and أعطيت/أعطى/أعطت/أعطينا/أعطيتم/أعطوا",
+      "paradigms": {
+        "present": {
+          "1sg": "أعطي",
+          "2ms": "تعطي",
+          "2fs": "تعطين",
+          "3ms": "يعطي",
+          "3fs": "تعطي",
+          "1pl": "نعطي",
+          "2pl": "تعطون",
+          "3pl": "يعطون"
+        },
+        "past": {
+          "1sg": "أعطيت",
+          "2ms": "أعطيت",
+          "2fs": "أعطيت",
+          "3ms": "أعطى",
+          "3fs": "أعطت",
+          "1pl": "أعطينا",
+          "2pl": "أعطيتم",
+          "3pl": "أعطوا"
+        }
+      },
+      "iraqi_stems": {
+        "present": "شرگ",
+        "past": "شرگ"
+      },
+      "allow_bare": "3ms",
+      "region": [
+        "general"
+      ],
+      "note": "شرگ/أشرگ/أشرگه → أعطى/أعطي/أعطيه; the imperfective ن form keeps its ت (نتشرگ)",
+      "example": {
+        "in": "أشرگه",
+        "out": "أعطيه",
+        "level": "token"
+      }
+    },
+    "خاف": {
+      "msa_root": "خاف",
+      "msa_stems": {
+        "present": "خاف",
+        "past": "خاف"
+      },
+      "msa_prefixes": {
+        "1sg": "أ",
+        "2ms": "ت",
+        "2fs": "ت",
+        "3ms": "ي",
+        "3fs": "ت",
+        "1pl": "ن",
+        "2pl": "ت",
+        "3pl": "ي"
+      },
+      "iraqi_stems": {
+        "present": "خاف",
+        "past": "خاف"
+      },
+      "alt_stems": {
+        "present": [
+          "خوف"
+        ]
+      },
+      "allow_bare": "3ms",
+      "region": [
+        "general"
+      ],
+      "note": "أخاف/تخافه/تخوفه/يخافون → أخاف/تخافه/تخافه/يخافون; خاف and خوف are both used for the imperfective",
+      "example": {
+        "in": "تخافه",
+        "out": "تخافه",
+        "level": "token"
+      }
+    },
+    "نام": {
+      "msa_root": "نام",
+      "msa_stems": {
+        "present": "نام",
+        "past": "نام"
+      },
+      "msa_prefixes": {
+        "1sg": "أ",
+        "2ms": "ت",
+        "2fs": "ت",
+        "3ms": "ي",
+        "3fs": "ت",
+        "1pl": "ن",
+        "2pl": "ت",
+        "3pl": "ي"
+      },
+      "iraqi_stems": {
+        "present": "نوم",
+        "past": "نام"
+      },
+      "allow_bare": "3ms",
+      "region": [
+        "general"
+      ],
+      "note": "أنوم/تنومون → أنوم/تنامون; نام is a shared word, only the نوم stem is Iraqi",
+      "example": {
+        "in": "تنوم",
+        "out": "تنام",
+        "level": "token"
+      }
+    },
+    "جوع": {
+      "msa_root": "جاع",
+      "msa_stems": {
+        "present": "جاع",
+        "past": "جاع"
+      },
+      "msa_prefixes": {
+        "1sg": "أ",
+        "2ms": "ت",
+        "2fs": "ت",
+        "3ms": "ي",
+        "3fs": "ت",
+        "1pl": "ن",
+        "2pl": "ت",
+        "3pl": "ي"
+      },
+      "iraqi_stems": {
+        "present": "جوع",
+        "past": "جاع"
+      },
+      "forms": {
+        "جعت": {
+          "msa": "جاعت",
+          "tense": "past"
+        }
+      },
+      "allow_bare": "3ms",
+      "region": [
+        "general"
+      ],
+      "note": "تجوع/جعت → تجاع/جاعت; the contracted feminine جعت is listed because the -ت- suffix cannot be generated from the stem جاع",
+      "example": {
+        "in": "جعت",
+        "out": "جاعت",
+        "level": "token"
+      }
+    },
+    "بعت": {
+      "msa_root": "بعث",
+      "msa_stems": {
+        "present": "بعث",
+        "past": "بعث"
+      },
+      "msa_prefixes": {
+        "1sg": "أ",
+        "2ms": "ت",
+        "2fs": "ت",
+        "3ms": "ي",
+        "3fs": "ت",
+        "1pl": "ن",
+        "2pl": "ت",
+        "3pl": "ي"
+      },
+      "iraqi_stems": {
+        "present": "تبع",
+        "past": "بعت"
+      },
+      "allow_bare": "3ms",
+      "region": [
+        "general"
+      ],
+      "note": "أتبع/تبعه → أبعث/يبعثه (إرسال sense, not اتبع)",
+      "example": {
+        "in": "أتبعه",
+        "out": "أبعثه",
+        "level": "token"
+      }
+    }
+  }
+}

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "iraqitext"
-version = "0.2.0"
+version = "0.3.0"
 description = "Lightweight NLP for the Iraqi Arabic dialect: normalization, tokenization, dialect detection and Iraqi <-> MSA translation"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -36,7 +36,10 @@ where = ["src"]
 include = ["iraqitext*"]
 
 [tool.setuptools.package-data]
-iraqitext = ["dictionary.json"]
+# The three data files are the library, not decoration: without them the
+# engine starts up with an empty dictionary.  Keep this list in step with
+# `validate.py`, which refuses to run if one of them is missing.
+iraqitext = ["dictionary.json", "morphology.json", "lexicon.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

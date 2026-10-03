@@ -15,7 +15,9 @@ Typical use::
     it.normalize("شــــلونك؟؟؟")   # "شلونك؟"
     it.detect("شلونك شخبارك؟")     # Detection(dialect='iraqi', ...)
 """
+from .coverage import CoverageLog, TranslationReport, coverage_stats
 from .detector import Detection, detect, is_arabic, is_iraqi
+from .morphology import DIALECTS, MORPHOLOGY_CONFIDENCE, MorphologyEngine
 from .normalize import (
     collapse_repeated_letters,
     light_normalize,
@@ -29,9 +31,9 @@ from .normalize import (
 )
 from .text import IraqiText
 from .tokenizer import Token, tokenize, word_tokenize
-from .translator import CLITIC_LETTERS, IraqiTranslator
+from .translator import CLITIC_LETTERS, TIERS, IraqiTranslator
 
-__version__ = "0.2.0"
+__version__ = "0.3.0"
 
 __all__ = [
     "IraqiTranslator",
@@ -57,4 +59,13 @@ __all__ = [
     "is_arabic",
     # translator helpers
     "CLITIC_LETTERS",
+    "TIERS",
+    # morphology
+    "MorphologyEngine",
+    "DIALECTS",
+    "MORPHOLOGY_CONFIDENCE",
+    # coverage reporting
+    "TranslationReport",
+    "CoverageLog",
+    "coverage_stats",
 ]
